@@ -8,6 +8,8 @@ import { NotifierService } from 'angular-notifier';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  title = 'criptografia-rsa';
+
   key: any = new JSEncrypt();
   publicKey: string = '';
   privateKey: string = '';
