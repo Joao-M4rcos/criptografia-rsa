@@ -57,17 +57,41 @@
         }
 
         button {
-          margin: 0 0 12% 0;
+          width: 100%;
+          margin: 0 100% 12% 0;
         }
       }
 
       .message-actions {
-        width: 18%;
         justify-content: center;
+      }
+
+      .actions,
+      .message-actions {
+        width: 18%;
       }
 
       .mat-form-field {
         width: 38%;
+
+        textarea.mat-input-element {
+          padding: 2% 0 0 0;
+        }
+
+        button {
+          cursor: pointer;
+          position: absolute;
+          top: -6%;
+          right: 0.5%;
+          background: transparent;
+
+          .material-symbols-outlined {
+            font-size: 22px;
+          }
+        }
+        button:hover {
+          opacity: 0.8;
+        }
       }
 
       .buttons {
@@ -91,6 +115,7 @@
       .form {
         flex-direction: column;
 
+        .actions,
         .message-actions {
           width: 100%;
           justify-content: center;

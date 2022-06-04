@@ -33,7 +33,11 @@
           cdkAutosizeMinRows="10"
           cdkAutosizeMaxRows="10"
           [(ngModel)]="publicKey"
+          #copyPuclicKey
         ></textarea>
+        <button [ngxClipboard]="copyPuclicKey">
+          <span class="material-symbols-outlined"> content_copy </span>
+        </button>
       </mat-form-field>
 
       <mat-form-field class="example-full-width" appearance="fill">
@@ -44,7 +48,11 @@
           cdkAutosizeMinRows="10"
           cdkAutosizeMaxRows="10"
           [(ngModel)]="privateKey"
+          #copyPrivateKey
         ></textarea>
+        <button [ngxClipboard]="copyPrivateKey">
+          <span class="material-symbols-outlined"> content_copy </span>
+        </button>
       </mat-form-field>
     </div>
   </div>
@@ -81,7 +89,11 @@
           cdkAutosizeMinRows="10"
           cdkAutosizeMaxRows="10"
           [(ngModel)]="message"
+          #copyMessage
         ></textarea>
+        <button [ngxClipboard]="copyMessage">
+          <span class="material-symbols-outlined"> content_copy </span>
+        </button>
       </mat-form-field>
 
       <mat-form-field class="example-full-width" appearance="fill">
@@ -92,7 +104,11 @@
           cdkAutosizeMinRows="10"
           cdkAutosizeMaxRows="10"
           [(ngModel)]="eMessage"
+          #copyEncryptedMessage
         ></textarea>
+        <button [ngxClipboard]="copyEncryptedMessage">
+          <span class="material-symbols-outlined"> content_copy </span>
+        </button>
       </mat-form-field>
     </div>
   </div>

@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { NotifierModule } from 'angular-notifier';
+import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { NotifierModule } from 'angular-notifier';
     FormsModule,
     BrowserAnimationsModule,
     MaterialModule,
+    ClipboardModule,
     NotifierModule.withConfig({
       position: {
         horizontal: {
