@@ -1,13 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding, ViewEncapsulation } from '@angular/core';
 import { JSEncrypt } from 'jsencrypt';
 import { NotifierService } from 'angular-notifier';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
+  @HostBinding('class') className = '';
+
   title = 'criptografia-rsa';
 
   key: any = new JSEncrypt();
@@ -18,12 +22,23 @@ export class AppComponent {
   private readonly notifier: NotifierService;
   keySizes: any = ['256', '512', '1024', '2048'];
   keySize: string = '1024';
+  toggleControl = new FormControl(false);
+  lightClassName: string = 'lightMode';
+  darkClassName: string = 'darkMode';
 
   constructor(notifierService: NotifierService) {
     this.notifier = notifierService;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    const wi = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    this.className = this.lightClassName;
+
+    if (wi) {
+      this.toggleControl.setValue('true');
+      this.className = this.darkClassName;
+    }
+  }
 
   generateKey = () => {
     if (!this.keySizes.includes(this.keySize)) this.keySize = '1024';
@@ -69,5 +84,13 @@ export class AppComponent {
     this.message = '';
     this.eMessage = '';
     this.keySize = '1024';
+  };
+
+  changeThemeMode = () => {
+    if (this.className == this.darkClassName)
+      this.className = this.lightClassName;
+    else {
+      this.className = this.darkClassName;
+    }
   };
 }

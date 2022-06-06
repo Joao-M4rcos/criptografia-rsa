@@ -4,125 +4,137 @@
   padding: 0;
 }
 
-.header {
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  background-color: #3f51b5;
-  color: #fff;
-  margin: 0 0 2% 0;
+.background,
+.mat-app-background {
+  height: 100vh;
 
-  h2 {
-    margin: 0 30% 0 0;
+  .mat-toolbar {
+    justify-content: space-evenly;
+    margin: 0 0 2% 0;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .mat-card {
+      display: flex;
+      flex-direction: column;
+      width: 70%;
+      border: 2px solid #d4d2d2;
+      border-radius: 4px;
+      margin: 0 0 1% 0;
+      border: none;
+
+      .mat-card-content {
+        display: flex;
+        justify-content: space-between;
+        padding: 30px;
+
+        .actions {
+          display: flex;
+          flex-direction: column;
+
+          .mat-form-field {
+            width: 100%;
+          }
+
+          button {
+            width: 100%;
+            margin: 0 100% 12% 0;
+          }
+        }
+
+        .message-actions {
+          justify-content: center;
+        }
+
+        .actions,
+        .message-actions {
+          width: 18%;
+        }
+
+        .mat-form-field {
+          width: 38%;
+
+          textarea.mat-input-element {
+            padding: 2% 0 0 0;
+          }
+
+          .copyButton {
+            cursor: pointer;
+            position: absolute;
+            top: -10%;
+            right: 8%;
+            padding: 0 !important;
+            margin: 0 !important;
+            width: 0 !important;
+            min-width: unset !important;
+            background: transparent !important;
+
+            span:hover {
+              opacity: 0.87;
+            }
+
+            .material-symbols-outlined {
+              font-size: 22px;
+            }
+          }
+        }
+
+        .buttons {
+          display: flex;
+          justify-content: flex-end;
+          div {
+            margin: 0 0 0 2%;
+          }
+          .button-generate {
+            display: flex;
+            justify-content: flex-end;
+          }
+        }
+      }
+    }
   }
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.selectDarkMode {
+  background: #303030 !important;
 
-  .card {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    border: 2px solid #d4d2d2;
-    border-radius: 4px;
-    margin: 0 0 1% 0;
-
-    .form-header {
-      display: flex;
-      align-items: center;
-      background: #f5f5f5;
-      padding: 20px;
-      border-radius: 4px;
-
-      h1 {
-        margin: 0;
-        font-size: 30px;
-      }
-    }
-
-    .form {
-      display: flex;
-      justify-content: space-between;
-      padding: 30px;
-
-      .actions {
-        display: flex;
-        flex-direction: column;
-
-        .mat-form-field {
-          width: 100%;
-        }
-
-        button {
-          width: 100%;
-          margin: 0 100% 12% 0;
-        }
-      }
-
-      .message-actions {
-        justify-content: center;
-      }
-
-      .actions,
-      .message-actions {
-        width: 18%;
-      }
-
-      .mat-form-field {
-        width: 38%;
-
-        textarea.mat-input-element {
-          padding: 2% 0 0 0;
-        }
-
-        button {
-          cursor: pointer;
-          position: absolute;
-          top: -6%;
-          right: 0.5%;
-          background: transparent;
-
-          .material-symbols-outlined {
-            font-size: 22px;
-          }
-        }
-        button:hover {
-          opacity: 0.8;
-        }
-      }
-
-      .buttons {
-        display: flex;
-        justify-content: flex-end;
-        div {
-          margin: 0 0 0 2%;
-        }
-        .button-generate {
-          display: flex;
-          justify-content: flex-end;
-        }
-      }
-    }
+  .mat-option.mat-selected:not(.mat-option-disabled) {
+    font-weight: bold;
+  }
+  .mat-option-text {
+    color: white !important;
   }
 }
 
 @media screen and (min-width: 320px) and (max-width: 1025px) {
-  .container {
-    .card {
-      .form {
-        flex-direction: column;
+  .background {
+    height: auto;
 
-        .actions,
-        .message-actions {
-          width: 100%;
-          justify-content: center;
-        }
+    .mat-toolbar {
+      .title {
+        font-size: 15px;
+        margin: 0 2% 0 0;
+      }
+    }
+    .container {
+      .mat-card {
+        width: 90%;
+        .mat-card-content {
+          flex-direction: column;
 
-        .mat-form-field {
-          width: 100%;
+          .actions,
+          .message-actions {
+            width: 100%;
+            justify-content: center;
+          }
+
+          .mat-form-field {
+            width: 100%;
+          }
         }
       }
     }
@@ -130,17 +142,21 @@
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1366px) {
-  .container {
-    .card {
-      width: 90%;
+  .background {
+    .container {
+      .mat-card {
+        width: 90%;
+      }
     }
   }
 }
 
 @media screen and (min-width: 1366px) and (max-width: 1919px) {
-  .container {
-    .card {
-      width: 80%;
+  .background {
+    .container {
+      .mat-card {
+        width: 80%;
+      }
     }
   }
 }

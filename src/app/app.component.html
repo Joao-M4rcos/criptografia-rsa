@@ -1,117 +1,138 @@
-<div class="header">
-  <h2>Matemática Discreta - Criptografia RSA</h2>
-</div>
-
-<div class="container">
-  <div class="card">
-    <div class="form-header">
-      <h1>RSA Key Generator</h1>
+<div class="background mat-app-background">
+  <mat-toolbar color="primary">
+    <div class="title">
+      <span>Matemática Discreta - Criptografia RSA</span>
     </div>
-    <div class="form">
-      <div class="actions">
-        <mat-form-field appearance="fill">
-          <mat-label>Key Size</mat-label>
-          <mat-select [(ngModel)]="keySize" [placeholder]="keySize">
-            <mat-option *ngFor="let keySize of keySizes" [value]="keySize"
-              >{{ keySize }}
-            </mat-option>
-          </mat-select>
+    <button
+      mat-icon-button
+      *ngIf="className == darkClassName"
+      (click)="changeThemeMode()"
+    >
+      <span class="material-symbols-outlined"> light_mode </span>
+    </button>
+    <button
+      mat-icon-button
+      *ngIf="className != darkClassName"
+      (click)="changeThemeMode()"
+    >
+      <span class="material-symbols-outlined"> bedtime </span>
+    </button>
+  </mat-toolbar>
+
+  <div class="container">
+    <mat-card>
+      <mat-card-title> <h1>RSA Key Generator</h1></mat-card-title>
+      <mat-card-content>
+        <div class="actions">
+          <mat-form-field appearance="fill">
+            <mat-label>Key Size</mat-label>
+            <mat-select
+              [(ngModel)]="keySize"
+              [placeholder]="keySize"
+              [panelClass]="{ selectDarkMode: className == darkClassName }"
+            >
+              <mat-option *ngFor="let keySize of keySizes" [value]="keySize"
+                >{{ keySize }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="generateKey()">
+            Generate Key
+          </button>
+          <button mat-raised-button color="basic" (click)="clearFields()">
+            Clear Fields
+          </button>
+        </div>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Public Key:</mat-label>
+          <textarea
+            matInput
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="10"
+            cdkAutosizeMaxRows="10"
+            [(ngModel)]="publicKey"
+            #copyPuclicKey
+          ></textarea>
+          <button [ngxClipboard]="copyPuclicKey" class="copyButton" mat-button>
+            <span class="material-symbols-outlined"> content_copy </span>
+          </button>
         </mat-form-field>
-        <button mat-raised-button color="primary" (click)="generateKey()">
-          Generate Key
-        </button>
-        <button mat-raised-button color="basic" (click)="clearFields()">
-          Clear Fields
-        </button>
-      </div>
 
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Public Key:</mat-label>
-        <textarea
-          matInput
-          cdkTextareaAutosize
-          cdkAutosizeMinRows="10"
-          cdkAutosizeMaxRows="10"
-          [(ngModel)]="publicKey"
-          #copyPuclicKey
-        ></textarea>
-        <button [ngxClipboard]="copyPuclicKey">
-          <span class="material-symbols-outlined"> content_copy </span>
-        </button>
-      </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Private Key:</mat-label>
+          <textarea
+            matInput
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="10"
+            cdkAutosizeMaxRows="10"
+            [(ngModel)]="privateKey"
+            #copyPrivateKey
+          ></textarea>
+          <button [ngxClipboard]="copyPrivateKey" class="copyButton" mat-button>
+            <span class="material-symbols-outlined"> content_copy </span>
+          </button>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
 
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Private Key:</mat-label>
-        <textarea
-          matInput
-          cdkTextareaAutosize
-          cdkAutosizeMinRows="10"
-          cdkAutosizeMaxRows="10"
-          [(ngModel)]="privateKey"
-          #copyPrivateKey
-        ></textarea>
-        <button [ngxClipboard]="copyPrivateKey">
-          <span class="material-symbols-outlined"> content_copy </span>
-        </button>
-      </mat-form-field>
-    </div>
+    <mat-card>
+      <mat-card-title> <h1>Message Encrypt and Decrypt</h1></mat-card-title>
+      <mat-card-content>
+        <div class="actions message-actions">
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="encrypt()"
+            [disabled]="!message"
+          >
+            Encrypt
+          </button>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="decrypt()"
+            [disabled]="!eMessage"
+          >
+            Decrypt
+          </button>
+        </div>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Message:</mat-label>
+          <textarea
+            matInput
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="10"
+            cdkAutosizeMaxRows="10"
+            [(ngModel)]="message"
+            #copyMessage
+          ></textarea>
+          <button [ngxClipboard]="copyMessage" class="copyButton" mat-button>
+            <span class="material-symbols-outlined"> content_copy </span>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Encrypted Message</mat-label>
+          <textarea
+            matInput
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="10"
+            cdkAutosizeMaxRows="10"
+            [(ngModel)]="eMessage"
+            #copyEncryptedMessage
+          ></textarea>
+          <button
+            [ngxClipboard]="copyEncryptedMessage"
+            class="copyButton"
+            mat-button
+          >
+            <span class="material-symbols-outlined"> content_copy </span>
+          </button>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
   </div>
-
-  <div class="card">
-    <div class="form-header">
-      <h1>Message Encrypt and Decrypt</h1>
-    </div>
-    <div class="form">
-      <div class="actions message-actions">
-        <button
-          mat-raised-button
-          color="primary"
-          (click)="encrypt()"
-          [disabled]="!message"
-        >
-          Encrypt
-        </button>
-        <button
-          mat-raised-button
-          color="primary"
-          (click)="decrypt()"
-          [disabled]="!eMessage"
-        >
-          Decrypt
-        </button>
-      </div>
-
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Message:</mat-label>
-        <textarea
-          matInput
-          cdkTextareaAutosize
-          cdkAutosizeMinRows="10"
-          cdkAutosizeMaxRows="10"
-          [(ngModel)]="message"
-          #copyMessage
-        ></textarea>
-        <button [ngxClipboard]="copyMessage">
-          <span class="material-symbols-outlined"> content_copy </span>
-        </button>
-      </mat-form-field>
-
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Encrypted Message</mat-label>
-        <textarea
-          matInput
-          cdkTextareaAutosize
-          cdkAutosizeMinRows="10"
-          cdkAutosizeMaxRows="10"
-          [(ngModel)]="eMessage"
-          #copyEncryptedMessage
-        ></textarea>
-        <button [ngxClipboard]="copyEncryptedMessage">
-          <span class="material-symbols-outlined"> content_copy </span>
-        </button>
-      </mat-form-field>
-    </div>
-  </div>
+  <notifier-container></notifier-container>
 </div>
-
-<notifier-container></notifier-container>

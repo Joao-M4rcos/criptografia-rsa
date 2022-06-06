@@ -1,4 +1,61 @@
+@use "@angular/material" as mat;
+
 @import "~angular-notifier/styles";
+
+@include mat.core();
+
+$dark-primary: mat.define-palette(mat.$purple-palette);
+$dark-accent: mat.define-palette(mat.$green-palette);
+$dark-warn: mat.define-palette(mat.$green-palette);
+$dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $dark-primary,
+      accent: $dark-accent,
+      warn: $dark-warn,
+    ),
+  )
+);
+
+.darkMode {
+  @include mat.all-component-colors($dark-theme);
+
+  .mat-focused .mat-form-field-label {
+    color: white !important;
+  }
+
+  .mat-form-field-underline {
+    background-color: white !important;
+  }
+
+  .mat-form-field-ripple {
+    background-color: white !important;
+  }
+
+  .mat-form-field textarea {
+    caret-color: white !important;
+  }
+}
+
+// @media (prefers-color-scheme: dark) {
+//   @include mat.all-component-colors($dark-theme);
+
+//   .mat-focused .mat-form-field-label {
+//     color: white !important;
+//   }
+
+//   .mat-form-field-underline {
+//     background-color: white !important;
+//   }
+
+//   .mat-form-field-ripple {
+//     background-color: white !important;
+//   }
+
+//   .mat-form-field textarea {
+//     caret-color: white !important;
+//   }
+// }
 
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
@@ -6,7 +63,6 @@
 
 html,
 body {
-  height: 100%;
 }
 body {
   margin: 0;
