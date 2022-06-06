@@ -93,4 +93,28 @@ export class AppComponent {
       this.className = this.darkClassName;
     }
   };
+
+  copyNotification = (buttonName: string) => {
+    if (buttonName == 'publicKey') {
+      this.notifier.show({
+        type: 'success',
+        message: 'Public key copied!',
+      });
+    } else if (buttonName == 'privateKey') {
+      this.notifier.show({
+        type: 'success',
+        message: 'Private key copied!',
+      });
+    } else if (buttonName == 'message') {
+      this.notifier.show({
+        type: 'success',
+        message: 'Message copied!',
+      });
+    } else {
+      this.notifier.show({
+        type: 'success',
+        message: 'Encrypted message copied!',
+      });
+    }
+  };
 }

@@ -54,7 +54,12 @@
             [(ngModel)]="publicKey"
             #copyPuclicKey
           ></textarea>
-          <button [ngxClipboard]="copyPuclicKey" class="copyButton" mat-button>
+          <button
+            mat-button
+            [ngxClipboard]="copyPuclicKey"
+            class="copyButton"
+            (click)="copyNotification('publicKey')"
+          >
             <span class="material-symbols-outlined"> content_copy </span>
           </button>
         </mat-form-field>
@@ -69,7 +74,13 @@
             [(ngModel)]="privateKey"
             #copyPrivateKey
           ></textarea>
-          <button [ngxClipboard]="copyPrivateKey" class="copyButton" mat-button>
+          <button
+            mat-button
+            [ngxClipboard]="copyPrivateKey"
+            class="copyButton"
+            mat-button
+            (click)="copyNotification('privateKey')"
+          >
             <span class="material-symbols-outlined"> content_copy </span>
           </button>
         </mat-form-field>
@@ -108,7 +119,12 @@
             [(ngModel)]="message"
             #copyMessage
           ></textarea>
-          <button [ngxClipboard]="copyMessage" class="copyButton" mat-button>
+          <button
+            mat-button
+            [ngxClipboard]="copyMessage"
+            class="copyButton"
+            (click)="copyNotification('message')"
+          >
             <span class="material-symbols-outlined"> content_copy </span>
           </button>
         </mat-form-field>
@@ -124,9 +140,10 @@
             #copyEncryptedMessage
           ></textarea>
           <button
+            mat-button
             [ngxClipboard]="copyEncryptedMessage"
             class="copyButton"
-            mat-button
+            (click)="copyNotification('encryptedM')"
           >
             <span class="material-symbols-outlined"> content_copy </span>
           </button>
