@@ -1,98 +1,85 @@
-* {
-  margin: 0;
-  border: 0;
-  padding: 0;
+.mat-toolbar {
+  justify-content: space-evenly;
 }
 
-.background,
-.mat-app-background {
-  height: 100vh;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2% 0 0 0;
+  min-height: 100vh;
+  .mat-card {
+    width: 70%;
+    border: 2px solid #d4d2d2;
+    border-radius: 4px;
+    margin: 0 0 1% 0;
+    border: none;
 
-  .mat-toolbar {
-    justify-content: space-evenly;
-    margin: 0 0 2% 0;
-  }
-
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .mat-card {
+    .mat-card-content {
       display: flex;
-      flex-direction: column;
-      width: 70%;
-      border: 2px solid #d4d2d2;
-      border-radius: 4px;
-      margin: 0 0 1% 0;
-      border: none;
+      justify-content: space-between;
+      padding: 30px;
 
-      .mat-card-content {
+      .actions {
         display: flex;
-        justify-content: space-between;
-        padding: 30px;
-
-        .actions {
-          display: flex;
-          flex-direction: column;
-
-          .mat-form-field {
-            width: 100%;
-          }
-
-          button {
-            width: 100%;
-            margin: 0 100% 12% 0;
-          }
-        }
-
-        .message-actions {
-          justify-content: center;
-        }
-
-        .actions,
-        .message-actions {
-          width: 18%;
-        }
+        flex-direction: column;
 
         .mat-form-field {
-          width: 38%;
-
-          textarea.mat-input-element {
-            padding: 2% 0 0 0;
-          }
-
-          .copyButton {
-            cursor: pointer;
-            position: absolute;
-            top: -10%;
-            right: 8%;
-            padding: 0 !important;
-            margin: 0 !important;
-            width: 0 !important;
-            min-width: unset !important;
-            background: transparent !important;
-
-            span:hover {
-              opacity: 0.87;
-            }
-
-            .material-symbols-outlined {
-              font-size: 22px;
-            }
-          }
+          width: 100%;
         }
 
-        .buttons {
+        button {
+          width: 100%;
+          margin: 0 100% 12% 0;
+        }
+      }
+
+      .message-actions {
+        justify-content: center;
+      }
+
+      .actions,
+      .message-actions {
+        width: 18%;
+      }
+
+      .mat-form-field {
+        width: 38%;
+
+        textarea.mat-input-element {
+          padding: 2% 0 0 0;
+        }
+
+        .copyButton {
+          cursor: pointer;
+          position: absolute;
+          top: -12.5%;
+          right: 8.5%;
+          padding: 0 !important;
+          margin: 0 !important;
+          width: 0 !important;
+          min-width: unset !important;
+          background: transparent !important;
+
+          span:hover {
+            opacity: 0.87;
+          }
+
+          .material-symbols-outlined {
+            font-size: 22px;
+          }
+        }
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: flex-end;
+        div {
+          margin: 0 0 0 2%;
+        }
+        .button-generate {
           display: flex;
           justify-content: flex-end;
-          div {
-            margin: 0 0 0 2%;
-          }
-          .button-generate {
-            display: flex;
-            justify-content: flex-end;
-          }
         }
       }
     }
@@ -111,29 +98,43 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 1025px) {
-  .background {
-    height: auto;
+  .mat-toolbar {
+    .title {
+      font-size: 15px;
+      margin: 0 2% 0 0;
+    }
+  }
+  .container {
+    .mat-card {
+      width: 90%;
+      .mat-card-content {
+        flex-direction: column;
 
-    .mat-toolbar {
-      .title {
-        font-size: 15px;
-        margin: 0 2% 0 0;
+        .actions,
+        .message-actions {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .mat-form-field {
+          width: 100%;
+
+          .copyButton {
+            right: 12%;
+          }
+        }
       }
     }
-    .container {
-      .mat-card {
-        width: 90%;
-        .mat-card-content {
-          flex-direction: column;
+  }
+}
 
-          .actions,
-          .message-actions {
-            width: 100%;
-            justify-content: center;
-          }
-
-          .mat-form-field {
-            width: 100%;
+@media screen and (min-width: 600px) and (max-width: 1025px) {
+  .container {
+    .mat-card {
+      .mat-card-content {
+        .mat-form-field {
+          .copyButton {
+            right: 8% !important;
           }
         }
       }
@@ -142,22 +143,33 @@
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1366px) {
-  .background {
-    height: auto;
-    .container {
-      .mat-card {
-        width: 90%;
+  .container {
+    .mat-card {
+      width: 90%;
+
+      .mat-card-content {
+        .mat-form-field {
+          .copyButton {
+            top: -12%;
+            right: 10%;
+          }
+        }
       }
     }
   }
 }
 
 @media screen and (min-width: 1366px) and (max-width: 1919px) {
-  .background {
-    height: auto;
-    .container {
-      .mat-card {
-        width: 80%;
+  .container {
+    .mat-card {
+      width: 80%;
+      .mat-card-content {
+        .mat-form-field {
+          .copyButton {
+            top: -12%;
+            right: 10%;
+          }
+        }
       }
     }
   }
