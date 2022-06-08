@@ -143,6 +143,7 @@
 
 @media screen and (min-width: 1025px) and (max-width: 1366px) {
   .background {
+    height: auto;
     .container {
       .mat-card {
         width: 90%;
@@ -153,6 +154,7 @@
 
 @media screen and (min-width: 1366px) and (max-width: 1919px) {
   .background {
+    height: auto;
     .container {
       .mat-card {
         width: 80%;
